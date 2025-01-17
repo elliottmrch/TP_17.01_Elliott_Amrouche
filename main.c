@@ -1,7 +1,12 @@
 #include <stdio.h>
 
-int main(void) {
-    const int a = 5;
-    a = 4;
+int main() {
+    int a = 2 ;
+    printf(" %p", &a) ;
+    int *p = &a ;
+    printf(" %p " , p ) ;
+    printf(" %p " , &p ) ;
+    *p = 5 ;
+    printf(" %d " , a ) ;
     return 0;
 }
