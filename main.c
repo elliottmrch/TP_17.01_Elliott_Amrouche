@@ -1,6 +1,7 @@
 #include <stdio.h>
 
 int main(void) {
-    printf("Hello, World!\n");
+    const int a = 5;
+    a = 4;
     return 0;
 }
