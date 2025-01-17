@@ -2,7 +2,7 @@
 
 int main() {
     int a = 2 ;
-    printf(" %p", &a) ;
+    printf(" %p ", &a) ;
     int *p = &a ;
     printf(" %p " , p ) ;
     printf(" %p " , &p ) ;
