@@ -60,6 +60,9 @@ void runPhone(struct Application * app1, struct Application * app2)
             case 2:
                 runApplication(app2);
                 break;
+            case 0:
+                printf("Exit\n");
+                break;
             default:
                 printf("Option invalide\n");
                 break;
