@@ -12,44 +12,32 @@ struct Application
     int nb_menus;
 };
 
+void displayMenu(struct Application * app)
+{
+    printf("--%s--\n", app->nom);
+    for (int i = 0; i < app->nb_menus; i++)
+    {
+        printf("  %d. %s\n", i + 1, app->menus[i].option);
+    }
+    printf("  Choissisez une option (0 pour quitter)");
+}
+
 int main()
 {
-    struct Menu menusInstagram[] = {
-        {"Message"},
-        {"Photo"},
-        {"Compte"},
-        {"Parametres"},
-        {"Deconnexion"}
-    };
-    struct Application Instragram = {
-        "Instagram",
-        menusInstagram,
-        sizeof(menusInstagram) / sizeof(menusInstagram[0])
+    struct Menu MenusPhotos[] = {
+        {"Regarder une photo"},
+        {"Prendre une photo"},
+        {"Prendre une video"},
+        {"Activer/Desactiver le flache"}
     };
 
-    struct Menu menusFacebook[] = {
-        {"Message"},
-        {"Photo"},
-        {"Compte"},
-        {"Parametres"},
-        {"Deconnexion"}
-    };
-    struct Application Facebook = {
-        "Facebook",
-        menusFacebook,
-        sizeof(menusFacebook) / sizeof(menusFacebook[0])
+    struct Application Photos = {
+        "Photos",
+        MenusPhotos,
+        sizeof(MenusPhotos) / sizeof(MenusPhotos[0])
     };
 
-    printf("Application: %s\n", Instragram.nom);
-    for (int i = 0; i < Instragram.nb_menus; i++)
-    {
-        printf("  %d. %s\n", i + 1, Instragram.menus[i].option);Etape 1
-    }
+    displayMenu(&Photos);
 
-    printf("Application: %s\n", Facebook.nom);
-    for (int i = 0; i < Facebook.nb_menus; i++)
-    {
-        printf("  %d. %s\n", i + 1, Facebook.menus[i].option);
-    }
     return 0 ;
 }
