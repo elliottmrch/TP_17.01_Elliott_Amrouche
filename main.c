@@ -28,7 +28,6 @@ void runApplication(struct Application * app)
     int choix = -1;
     while (choix != 0)
     {
-        //system("cls");
         displayMenu(app);
         scanf_s("%d", &choix);
         if (choix > 0 && choix <= app->nb_menus)
@@ -41,6 +40,33 @@ void runApplication(struct Application * app)
         }
     }
 }
+
+void runPhone(struct Application * app1, struct Application * app2)
+{
+    int choix = -1;
+    while (choix != 0)
+    {
+        printf("--- Applications ---\n");
+        printf("1. %s\n", app1->nom);
+        printf("2. %s\n", app2->nom);
+        printf("0. Quitter\n");
+        scanf_s("%d", &choix);
+
+        switch (choix)
+        {
+            case 1:
+                runApplication(app1);
+                break;
+            case 2:
+                runApplication(app2);
+                break;
+            default:
+                printf("Option invalide\n");
+                break;
+        }
+    }
+}
+
 
 int main()
 {
@@ -57,8 +83,22 @@ int main()
         sizeof(MenusPhotos) / sizeof(MenusPhotos[0])
     };
 
+    struct Menu MenusMessages[] = {
+        {"Lire un message"},
+        {"Envoyer un message"},
+        {"Supprimer un message"},
+        {"Bloquer un contact"}
+    };
+
+    struct Application Messages = {
+        "Messages",
+        MenusMessages,
+        sizeof(MenusMessages) / sizeof(MenusMessages[0])
+    };
+
     //displayMenu(&Photos);
-    runApplication(&Photos);
+    //runApplication(&Photos);
+    runPhone(&Photos, &Messages);
 
     return 0 ;
 }
