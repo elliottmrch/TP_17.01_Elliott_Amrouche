@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 
 struct Menu
 {
@@ -17,9 +18,28 @@ void displayMenu(struct Application * app)
     printf("--%s--\n", app->nom);
     for (int i = 0; i < app->nb_menus; i++)
     {
-        printf("  %d. %s\n", i + 1, app->menus[i].option);
+        printf("%d. %s\n", i + 1, app->menus[i].option);
     }
-    printf("  Choissisez une option (0 pour quitter)");
+    printf("Choissisez une option (0 pour quitter) :");
+}
+
+void runApplication(struct Application * app)
+{
+    int choix = -1;
+    while (choix != 0)
+    {
+        //system("cls");
+        displayMenu(app);
+        scanf_s("%d", &choix);
+        if (choix > 0 && choix <= app->nb_menus)
+        {
+            printf("Vous avez selectionne %s\n", app->menus[choix - 1].option);
+        }
+        else if (choix != 0)
+        {
+            printf("Option invalide\n");
+        }
+    }
 }
 
 int main()
@@ -37,7 +57,8 @@ int main()
         sizeof(MenusPhotos) / sizeof(MenusPhotos[0])
     };
 
-    displayMenu(&Photos);
+    //displayMenu(&Photos);
+    runApplication(&Photos);
 
     return 0 ;
 }
